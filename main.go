@@ -16,7 +16,7 @@ import (
 
 const (
 	entries   = 10000
-	shaSuffix = ".sha256sum"
+	shaSuffix = ".sha256"
 )
 
 var stories = map[uint32]string{}
@@ -45,7 +45,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintln(h, s)
 		x := hex.NewEncoder(w)
 		fmt.Fprintf(x, "%s", h.Sum(nil))
-		fmt.Fprintln(w)
+		fmt.Fprintf(w, " %s\n", path.Base(base))
 	} else {
 		fmt.Fprintln(w, s)
 	}
