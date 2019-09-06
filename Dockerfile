@@ -11,7 +11,7 @@ FROM gcr.io/distroless/base@sha256:edc3643ddf96d75032a55e240900b68b335186f1e5fea
 MAINTAINER Marko Mikulicic <mmikulicic@gmail.com>
 
 COPY --from=builder /src/fakesha /usr/local/bin/
-COPY --from=builder /src/stories.txt /
+COPY --from=builder /src/stories.txt.gz /
 
 EXPOSE 8080
 ENTRYPOINT ["fakesha"]

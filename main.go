@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"compress/gzip"
 	"crypto/sha256"
 	"encoding/hex"
 	"fmt"
@@ -57,12 +58,17 @@ func hash(s string) uint32 {
 }
 
 func load() error {
-	f, err := os.Open("stories.txt")
+	f, err := os.Open("stories.txt.gz")
 	if err != nil {
 		return err
 	}
 
-	scanner := bufio.NewScanner(f)
+	g, err := gzip.NewReader(f)
+	if err != nil {
+		return err
+	}
+
+	scanner := bufio.NewScanner(g)
 	for scanner.Scan() {
 		s := scanner.Text()
 		n := hash(s)
