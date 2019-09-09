@@ -45,7 +45,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintln(h, s)
 		x := hex.NewEncoder(w)
 		fmt.Fprintf(x, "%s", h.Sum(nil))
-		fmt.Fprintf(w, " %s\n", path.Base(base))
+		fmt.Fprintf(w, "  %s\n", path.Base(base))
 	} else {
 		fmt.Fprintln(w, s)
 	}
