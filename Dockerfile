@@ -7,7 +7,7 @@ COPY . .
 RUN go build
 
 # Ideally we could use the "static" flavour but let's first start with the base flavour (which has glibc).
-FROM gcr.io/distroless/base@sha256:4f25af540d54d0f43cd6bc1114b7709f35338ae97d29db2f9a06012e3e82aba8
+FROM gcr.io/distroless/base@sha256:03dcbf61f859d0ae4c69c6242c9e5c3d7e1a42e5d3b69eb235e81a5810dd768e
 MAINTAINER Marko Mikulicic <mmikulicic@gmail.com>
 
 COPY --from=builder /src/fakesha /usr/local/bin/
